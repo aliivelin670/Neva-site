@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEVA</title>
+<title>NEVA CODE</title>
 
 <style>
 *{
@@ -18,63 +18,41 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#0f0f0f;
-    overflow:hidden;
-    color:white;
+    background-color:#f3f3f3;
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.04) 0px,
+        rgba(0,0,0,0.04) 1px,
+        transparent 1px,
+        transparent 40px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(0,0,0,0.04) 0px,
+        rgba(0,0,0,0.04) 1px,
+        transparent 1px,
+        transparent 40px
+    );
     text-align:center;
 }
 
-/* Hareketli arka plan */
-body::before{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:200%;
-    background: linear-gradient(
-        60deg,
-        #000000,
-        #111111,
-        #1a1a1a,
-        #000000
-    );
-    animation: bgMove 10s linear infinite;
-    z-index:-1;
-}
-
-@keyframes bgMove {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(-25%, -25%); }
-    100% { transform: translate(0,0); }
-}
-
 .container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    position:relative;
 }
 
 h1{
     font-size:120px;
-    letter-spacing:20px;
-    transition:0.4s;
-}
-
-h1:hover{
-    letter-spacing:30px;
-    text-shadow:0 0 25px white;
+    letter-spacing:25px;
+    font-weight:900;
+    color:#000;
 }
 
 p{
     margin-top:20px;
-    font-size:20px;
+    font-size:18px;
     letter-spacing:8px;
-    opacity:0.7;
-    animation: fade 2s infinite alternate;
-}
-
-@keyframes fade{
-    from{opacity:0.4;}
-    to{opacity:1;}
+    color:#444;
 }
 </style>
 </head>
@@ -82,7 +60,7 @@ p{
 <body>
 
 <div class="container">
-    <h1>NEVA</h1>
+    <h1>NEVA CODE</h1>
     <p>YAKINDA...</p>
 </div>
 
