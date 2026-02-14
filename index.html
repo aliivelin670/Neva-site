@@ -3,23 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEVA Studio</title>
+<title>NEVA BOT</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b0f17;color:white;scroll-behavior:smooth;overflow-x:hidden;}
 
-body{
-background:#0b0f17;
-color:white;
-scroll-behavior:smooth;
-}
-
+/* NAV */
 nav{
 display:flex;
-justify-content:space-between;
 align-items:center;
-padding:15px 30px;
+padding:15px 25px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
 position:fixed;
@@ -28,99 +23,98 @@ z-index:1000;
 }
 
 .logo{
-width:40px;
-height:40px;
-border-radius:50%;
+width:45px;height:45px;
+border-radius:12px;
 display:flex;
 align-items:center;
 justify-content:center;
 font-weight:900;
-font-size:20px;
+font-size:22px;
+cursor:pointer;
 background:linear-gradient(45deg,#7b5cff,#00d4ff);
 }
 
-nav ul{
-display:flex;
-gap:20px;
-list-style:none;
+/* SIDEBAR */
+.sidebar{
+position:fixed;
+left:-350px;
+top:0;
+width:350px;
+height:100%;
+background:#111827;
+padding:30px 20px;
+transition:0.4s;
+z-index:2000;
+overflow-y:auto;
 }
 
-nav ul li a{
-color:white;
+.sidebar.active{left:0;}
+
+.sidebar h2{
+margin-bottom:20px;
+font-weight:800;
+}
+
+.sidebar a{
+display:block;
+margin:15px 0;
 text-decoration:none;
+color:white;
 opacity:0.8;
 transition:0.3s;
 }
 
-nav ul li a:hover{
-opacity:1;
-color:#7b5cff;
-}
+.sidebar a:hover{opacity:1;color:#7b5cff;}
 
+/* SECTIONS */
 section{
-padding:100px 20px;
-text-align:center;
+padding:120px 25px;
+min-height:100vh;
 }
 
-.rgb-title{
-font-size:36px;
-font-weight:900;
-background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc,#ff00cc);
-background-size:300%;
--webkit-background-clip:text;
-color:transparent;
-animation:rgbMove 6s linear infinite;
-}
-
-@keyframes rgbMove{
-0%{background-position:0%}
-100%{background-position:300%}
-}
-
-.btn{
-margin-top:25px;
-padding:12px 25px;
-border-radius:30px;
-border:none;
-background:linear-gradient(45deg,#6a5cff,#00d4ff);
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px rgba(0,212,255,0.5);
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
+h1{
+font-size:34px;
+margin-bottom:20px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
-padding:25px;
+padding:20px;
 border-radius:15px;
-margin:20px auto;
-max-width:600px;
+margin-bottom:20px;
 }
 
-.bar{
-background:#1c2230;
-border-radius:20px;
-margin:10px 0;
-overflow:hidden;
+/* SEARCH */
+.search{
+padding:10px;
+width:100%;
+border-radius:10px;
+border:none;
+margin-bottom:20px;
 }
 
-.fill{
-height:20px;
-background:linear-gradient(45deg,#7b5cff,#00d4ff);
-text-align:right;
-padding-right:10px;
-font-size:12px;
+/* BACK TO TOP */
+#topBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#7b5cff;
+color:white;
+border:none;
+width:45px;
+height:45px;
+border-radius:8px;
+display:none;
+cursor:pointer;
+font-size:20px;
 }
+
+#topBtn:hover{background:#00d4ff;}
 
 footer{
 padding:30px;
 text-align:center;
 opacity:0.6;
-font-size:14px;
 border-top:1px solid rgba(255,255,255,0.1);
 }
 
@@ -129,64 +123,105 @@ border-top:1px solid rgba(255,255,255,0.1);
 <body>
 
 <nav>
-<div class="logo">N</div>
-<ul>
-<li><a href="#home">Başlangıç</a></li>
-<li><a href="#about">Hakkımda</a></li>
-<li><a href="#features">Sunucu</a></li>
-</ul>
+<div class="logo" onclick="toggleMenu()">N</div>
 </nav>
 
+<!-- SIDEBAR -->
+<div class="sidebar" id="menu">
+<h2>NEVA BOT</h2>
+<a href="#home" onclick="toggleMenu()">Ana Sayfa</a>
+<a href="#privacy" onclick="toggleMenu()">Gizlilik</a>
+<a href="#policy" onclick="toggleMenu()">Politika</a>
+<a href="#commands" onclick="toggleMenu()">Komutlar</a>
+<a href="#license" onclick="toggleMenu()">Lisans</a>
+<a href="#">Sunucuna Ekle</a>
+<a href="#">Destek Sunucusu</a>
+</div>
+
+<!-- HOME -->
 <section id="home">
-<h1 class="rgb-title">NEVA STUDIO | CODE COMMUNITY</h1>
-<p>Her hafta premium çekilişler, aktif sohbet ortamı ve süper altyapılarla
-geliştiriciler için modern bir topluluk.</p>
-<button class="btn">Sunucuya Katıl</button>
-</section>
-
-<section id="features">
-<h2>🚀 Code Sunucusu Özellikleri</h2>
-
+<h1>NEVA BOT</h1>
 <div class="card">
-<p>✔ Her hafta Premium çekiliş</p>
-<p>✔ Aktif ve kaliteli sohbet ortamı</p>
-<p>✔ Süper Discord altyapıları</p>
-<p>✔ Yardımlaşma ve destek kanalları</p>
-<p>✔ Özel rol sistemleri</p>
+Modern, aktif ve gelişmiş Discord bot topluluğu.
 </div>
 </section>
 
-<section id="about">
-<h2>👑 BENİM HAKKIMDA</h2>
-<h3 style="margin-top:10px;">SWQZE DERBA</h3>
-
+<!-- GIZLILIK -->
+<section id="privacy">
+<h1>Gizlilik Politikası</h1>
 <div class="card">
+Bot sadece gerekli verileri saklar. Sunucu ID, kullanıcı ID ve komut kullanımı gibi.
+Hiçbir veri üçüncü taraflarla paylaşılmaz.
+</div>
+</section>
 
-<p>DJ's Bilgisi</p>
-<div class="bar"><div class="fill" style="width:10%;">10%</div></div>
+<!-- POLITIKA -->
+<section id="policy">
+<h1>Kullanım Politikası</h1>
+<div class="card">
+Spam, kötüye kullanım ve zararlı aktiviteler yasaktır.
+Kurallara uymayan kullanıcıların erişimi kaldırılır.
+</div>
+</section>
 
-<p>BDFD</p>
-<div class="bar"><div class="fill" style="width:80%;">80%</div></div>
+<!-- KOMUTLAR -->
+<section id="commands">
+<h1>Komut Listesi</h1>
 
-<p>JavaScript</p>
-<div class="bar"><div class="fill" style="width:30%;">30%</div></div>
+<input type="text" class="search" placeholder="Komut ara..." onkeyup="filterCommands()">
 
-<p>HTML</p>
-<div class="bar"><div class="fill" style="width:40%;">40%</div></div>
+<div class="card cmd">!yardım - Yardım menüsünü gösterir</div>
+<div class="card cmd">!ban - Kullanıcıyı yasaklar</div>
+<div class="card cmd">!kick - Kullanıcıyı atar</div>
+<div class="card cmd">!filtre - Küfür filtresi açar</div>
+<div class="card cmd">!premium - Premium bilgisi</div>
 
-<p>CSS</p>
-<div class="bar"><div class="fill" style="width:35%;">35%</div></div>
+</section>
 
-<p>Node.js</p>
-<div class="bar"><div class="fill" style="width:25%;">25%</div></div>
-
+<!-- LISANS -->
+<section id="license">
+<h1>Lisans</h1>
+<div class="card">
+© 2026 NEVA BOT  
+Tüm hakları saklıdır.  
+İzinsiz kopyalanamaz veya dağıtılamaz.
 </div>
 </section>
 
 <footer>
-© 2026 NEVA Studio - All Rights Reserved.  
-This project is licensed under NEVA Creative License.
+NEVA BOT © 2026
 </footer>
+
+<button onclick="topFunction()" id="topBtn">↑</button>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+function filterCommands(){
+let input=document.querySelector(".search").value.toLowerCase();
+let commands=document.querySelectorAll(".cmd");
+commands.forEach(cmd=>{
+cmd.style.display=cmd.textContent.toLowerCase().includes(input) ? "block":"none";
+});
+}
+
+window.onscroll=function(){
+let btn=document.getElementById("topBtn");
+if(document.documentElement.scrollTop>300){
+btn.style.display="block";
+}else{
+btn.style.display="none";
+}
+};
+
+function topFunction(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+</script>
 
 </body>
 </html>
