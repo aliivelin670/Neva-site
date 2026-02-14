@@ -3,60 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEVA CODE</title>
+<title>NEVA Studio | Resmi Web Sitesi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:#f2f2f2;
-
-    /* Grid arka plan */
-    background-image:
-    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-
-    background-size:40px 40px;
-    text-align:center;
-    padding:20px;
+background:#0b0f17;
+color:white;
+overflow-x:hidden;
 }
 
-.container{
-    max-width:100%;
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
 }
 
-h1{
-    font-size: clamp(40px, 12vw, 140px);
-    font-weight:900;
-    letter-spacing: clamp(5px, 2vw, 25px);
-    color:#000;
-    line-height:1.1;
+.logo{
+font-weight:900;
+font-size:20px;
+letter-spacing:2px;
 }
 
-p{
-    margin-top:20px;
-    font-size: clamp(12px, 3vw, 20px);
-    letter-spacing:8px;
-    color:#555;
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+opacity:0.8;
+transition:0.3s;
+}
+
+nav ul li:hover{
+opacity:1;
+color:#7b5cff;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.rgb-title{
+font-size:48px;
+font-weight:900;
+background:linear-gradient(90deg, #ff00cc, #3333ff, #00ffcc, #ff00cc);
+background-size:300%;
+-webkit-background-clip:text;
+color:transparent;
+animation:rgbMove 6s linear infinite;
+}
+
+@keyframes rgbMove{
+0%{background-position:0%}
+100%{background-position:300%}
+}
+
+.hero p{
+margin-top:20px;
+max-width:600px;
+opacity:0.7;
+}
+
+.btn{
+margin-top:30px;
+padding:14px 30px;
+border-radius:30px;
+border:none;
+background:linear-gradient(45deg,#6a5cff,#00d4ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 20px rgba(0,212,255,0.5);
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(0,212,255,0.9);
+}
+
+.section{
+padding:80px 20px;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+margin:20px auto;
+max-width:500px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+footer{
+padding:30px;
+text-align:center;
+opacity:0.6;
+font-size:14px;
+}
+
+@media(max-width:768px){
+.rgb-title{
+font-size:34px;
+}
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>NEVA CODE</h1>
-    <p>YAKINDA...</p>
+<nav>
+<div class="logo">NEVA</div>
+<ul>
+<li>Hakkımızda</li>
+<li>Gizlilik</li>
+<li>Komutlar</li>
+<li>SSS</li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1 class="rgb-title">NEVA STUDIO | RESMİ WEB SİTESİ</h1>
+<p>Yaratıcılığın ve tasarımın birleştiği modern topluluk alanı. 
+Etkinlikler, tasarım savaşları ve üretken ortam ile fark yarat.</p>
+<button class="btn">Sunucuya Katıl</button>
+</section>
+
+<section class="section">
+<h2 style="margin-bottom:30px;">Özellikler</h2>
+
+<div class="card">
+<h3>🎨 Tasarım Battle</h3>
+<p>Haftalık logo ve UI tasarım yarışmaları.</p>
 </div>
+
+<div class="card">
+<h3>🌌 Chill Alan</h3>
+<p>Gece aktif sohbet ve üretken ortam.</p>
+</div>
+
+<div class="card">
+<h3>🚀 Etkinlikler</h3>
+<p>Mini görevler, ödüllü turnuvalar ve daha fazlası.</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 NEVA Studio - Tüm Hakları Saklıdır.
+</footer>
 
 </body>
 </html>
