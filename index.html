@@ -3,23 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEVA BOT</title>
+<title>NEVA Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#0b0f17;color:white;scroll-behavior:smooth;overflow-x:hidden;}
 
+/* TOP LANGUAGE BAR */
+.langbar{
+position:fixed;
+top:0;
+width:100%;
+height:60px;
+background:linear-gradient(90deg,#7b5cff,#00d4ff);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:3000;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.langbtn{
+cursor:pointer;
+padding:8px 20px;
+background:white;
+color:black;
+border-radius:20px;
+}
+
 /* NAV */
 nav{
+position:fixed;
+top:60px;
+width:100%;
 display:flex;
 align-items:center;
 padding:15px 25px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
-position:fixed;
-width:100%;
-z-index:1000;
+z-index:2000;
 }
 
 .logo{
@@ -42,49 +66,56 @@ top:0;
 width:350px;
 height:100%;
 background:#111827;
-padding:30px 20px;
+padding:100px 20px;
 transition:0.4s;
-z-index:2000;
+z-index:2500;
 overflow-y:auto;
 }
 
 .sidebar.active{left:0;}
 
-.sidebar h2{
-margin-bottom:20px;
-font-weight:800;
-}
+.sidebar h2{margin-bottom:20px;}
 
 .sidebar a{
 display:block;
 margin:15px 0;
-text-decoration:none;
 color:white;
+text-decoration:none;
 opacity:0.8;
-transition:0.3s;
 }
 
 .sidebar a:hover{opacity:1;color:#7b5cff;}
 
 /* SECTIONS */
 section{
-padding:120px 25px;
+padding:160px 25px;
 min-height:100vh;
+text-align:center;
 }
 
-h1{
-font-size:34px;
-margin-bottom:20px;
+.rgb-title{
+font-size:38px;
+font-weight:900;
+background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc,#ff00cc);
+background-size:300%;
+-webkit-background-clip:text;
+color:transparent;
+animation:rgbMove 6s linear infinite;
+}
+
+@keyframes rgbMove{
+0%{background-position:0%}
+100%{background-position:300%}
 }
 
 .card{
 background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:15px;
-margin-bottom:20px;
+margin:20px auto;
+max-width:700px;
 }
 
-/* SEARCH */
 .search{
 padding:10px;
 width:100%;
@@ -93,7 +124,6 @@ border:none;
 margin-bottom:20px;
 }
 
-/* BACK TO TOP */
 #topBtn{
 position:fixed;
 bottom:30px;
@@ -106,96 +136,77 @@ height:45px;
 border-radius:8px;
 display:none;
 cursor:pointer;
-font-size:20px;
 }
-
-#topBtn:hover{background:#00d4ff;}
 
 footer{
 padding:30px;
 text-align:center;
 opacity:0.6;
-border-top:1px solid rgba(255,255,255,0.1);
 }
 
 </style>
 </head>
 <body>
 
+<div class="langbar">
+<div class="langbtn" onclick="toggleLang()">TR | ENG</div>
+</div>
+
 <nav>
 <div class="logo" onclick="toggleMenu()">N</div>
 </nav>
 
-<!-- SIDEBAR -->
 <div class="sidebar" id="menu">
-<h2>NEVA BOT</h2>
-<a href="#home" onclick="toggleMenu()">Ana Sayfa</a>
-<a href="#privacy" onclick="toggleMenu()">Gizlilik</a>
-<a href="#policy" onclick="toggleMenu()">Politika</a>
-<a href="#commands" onclick="toggleMenu()">Komutlar</a>
-<a href="#license" onclick="toggleMenu()">Lisans</a>
-<a href="#">Sunucuna Ekle</a>
-<a href="#">Destek Sunucusu</a>
+<h2>NEVA Studio</h2>
+<a href="#home">Ana Sayfa</a>
+<a href="#privacy">Gizlilik</a>
+<a href="#commands">Komutlar</a>
+<a href="#license">Lisans</a>
+<a href="#">Sunucuya Ekle</a>
+<a href="#">Destek</a>
 </div>
 
-<!-- HOME -->
 <section id="home">
-<h1>NEVA BOT</h1>
-<div class="card">
-Modern, aktif ve gelişmiş Discord bot topluluğu.
+<h1 class="rgb-title" data-tr="NEVA STUDIO | RESMİ WEB SİTESİ" data-en="NEVA STUDIO | OFFICIAL WEBSITE">NEVA STUDIO | RESMİ WEB SİTESİ</h1>
+<div class="card" data-tr="Her hafta premium çekilişler, aktif sohbet ve güçlü altyapılar." data-en="Weekly premium giveaways, active chat and powerful infrastructures.">
+Her hafta premium çekilişler, aktif sohbet ve güçlü altyapılar.
 </div>
 </section>
 
-<!-- GIZLILIK -->
 <section id="privacy">
-<h1>Gizlilik Politikası</h1>
-<div class="card">
-Bot sadece gerekli verileri saklar. Sunucu ID, kullanıcı ID ve komut kullanımı gibi.
-Hiçbir veri üçüncü taraflarla paylaşılmaz.
+<h1 data-tr="Gizlilik Politikası" data-en="Privacy Policy">Gizlilik Politikası</h1>
+<div class="card" data-tr="Bot yalnızca gerekli verileri saklar ve üçüncü taraflarla paylaşmaz." data-en="The bot only stores necessary data and does not share with third parties.">
+Bot yalnızca gerekli verileri saklar ve üçüncü taraflarla paylaşmaz.
 </div>
 </section>
 
-<!-- POLITIKA -->
-<section id="policy">
-<h1>Kullanım Politikası</h1>
-<div class="card">
-Spam, kötüye kullanım ve zararlı aktiviteler yasaktır.
-Kurallara uymayan kullanıcıların erişimi kaldırılır.
-</div>
-</section>
-
-<!-- KOMUTLAR -->
 <section id="commands">
-<h1>Komut Listesi</h1>
+<h1 data-tr="Komut Listesi" data-en="Command List">Komut Listesi</h1>
 
 <input type="text" class="search" placeholder="Komut ara..." onkeyup="filterCommands()">
 
-<div class="card cmd">!yardım - Yardım menüsünü gösterir</div>
-<div class="card cmd">!ban - Kullanıcıyı yasaklar</div>
-<div class="card cmd">!kick - Kullanıcıyı atar</div>
-<div class="card cmd">!filtre - Küfür filtresi açar</div>
-<div class="card cmd">!premium - Premium bilgisi</div>
+<div class="card cmd">!yardım</div>
+<div class="card cmd">!ban</div>
+<div class="card cmd">!kick</div>
+<div class="card cmd">!filtre</div>
+<div class="card cmd">!premium</div>
 
 </section>
 
-<!-- LISANS -->
 <section id="license">
-<h1>Lisans</h1>
+<h1 data-tr="Lisans" data-en="License">Lisans</h1>
 <div class="card">
-© 2026 NEVA BOT  
-Tüm hakları saklıdır.  
-İzinsiz kopyalanamaz veya dağıtılamaz.
+© 2026 NEVA Studio - All rights reserved.
 </div>
 </section>
 
 <footer>
-NEVA BOT © 2026
+NEVA Studio © 2026
 </footer>
 
 <button onclick="topFunction()" id="topBtn">↑</button>
 
 <script>
-
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 }
@@ -221,6 +232,13 @@ function topFunction(){
 window.scrollTo({top:0,behavior:'smooth'});
 }
 
+let currentLang="tr";
+function toggleLang(){
+currentLang=currentLang==="tr"?"en":"tr";
+document.querySelectorAll("[data-tr]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+currentLang);
+});
+}
 </script>
 
 </body>
