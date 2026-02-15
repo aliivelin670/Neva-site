@@ -8,222 +8,160 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-background:#0b0f17;
-color:white;
-scroll-behavior:smooth;
-}
+body{background:#0b0f17;color:white;scroll-behavior:smooth;}
 
 nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-position:fixed;
-width:100%;
-z-index:1000;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 30px;background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);position:fixed;width:100%;z-index:1000;
 }
 
 .logo{
-width:40px;
-height:40px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
-font-size:20px;
+width:40px;height:40px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-weight:900;font-size:20px;
 background:linear-gradient(45deg,#7b5cff,#00d4ff);
 cursor:pointer;
 }
 
-nav ul{
-display:flex;
-gap:20px;
-list-style:none;
-}
+nav ul{display:flex;gap:20px;list-style:none;}
+nav ul li a{color:white;text-decoration:none;opacity:0.8;transition:0.3s;}
+nav ul li a:hover{opacity:1;color:#7b5cff;}
 
-nav ul li a{
-color:white;
-text-decoration:none;
-opacity:0.8;
-transition:0.3s;
-}
-
-nav ul li a:hover{
-opacity:1;
-color:#7b5cff;
-}
-
-section{
-padding:100px 20px;
-text-align:center;
-}
+section{padding:100px 20px;text-align:center;}
 
 .rgb-title{
-font-size:36px;
-font-weight:900;
+font-size:36px;font-weight:900;
 background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc,#ff00cc);
 background-size:300%;
--webkit-background-clip:text;
-color:transparent;
+-webkit-background-clip:text;color:transparent;
 animation:rgbMove 6s linear infinite;
 }
+@keyframes rgbMove{0%{background-position:0%}100%{background-position:300%}}
 
-@keyframes rgbMove{
-0%{background-position:0%}
-100%{background-position:300%}
-}
+.card{background:rgba(255,255,255,0.05);padding:25px;border-radius:15px;margin:20px auto;max-width:600px;}
+.bar{background:#1c2230;border-radius:20px;margin:10px 0;overflow:hidden;}
+.fill{height:20px;background:linear-gradient(45deg,#7b5cff,#00d4ff);text-align:right;padding-right:10px;font-size:12px;}
 
-.btn{
-margin-top:25px;
-padding:12px 25px;
-border-radius:30px;
-border:none;
-background:linear-gradient(45deg,#6a5cff,#00d4ff);
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px rgba(0,212,255,0.5);
-transition:0.3s;
-}
+footer{padding:30px;text-align:center;opacity:0.6;font-size:14px;border-top:1px solid rgba(255,255,255,0.1);}
 
-.btn:hover{
-transform:scale(1.05);
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:15px;
-margin:20px auto;
-max-width:600px;
-}
-
-.bar{
-background:#1c2230;
-border-radius:20px;
-margin:10px 0;
-overflow:hidden;
-}
-
-.fill{
-height:20px;
-background:linear-gradient(45deg,#7b5cff,#00d4ff);
-text-align:right;
-padding-right:10px;
-font-size:12px;
-}
-
-footer{
-padding:30px;
-text-align:center;
-opacity:0.6;
-font-size:14px;
-border-top:1px solid rgba(255,255,255,0.1);
-}
-
-/* ===== SLIDE MENU ===== */
-
+/* === MENU === */
 .side-menu{
-position:fixed;
-top:0;
-left:-350px;
-width:320px;
-height:100%;
-background:rgba(15,15,20,0.95);
+position:fixed;top:0;left:-100%;
+width:50%;height:100%;
+background:rgba(15,15,20,0.97);
 backdrop-filter:blur(15px);
-padding:30px 20px;
-transition:0.4s ease;
-z-index:2000;
-overflow-y:auto;
-box-shadow:5px 0 30px rgba(0,0,0,0.6);
+padding:30px;transition:0.4s;z-index:2000;overflow:auto;
 }
-
-.side-menu.active{
-left:0;
-}
-
-.side-menu h2{
-margin-bottom:20px;
-font-size:22px;
-background:linear-gradient(45deg,#7b5cff,#00d4ff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.side-menu a{
-display:block;
-margin:12px 0;
-color:white;
-text-decoration:none;
-opacity:0.8;
-transition:0.3s;
-}
-
-.side-menu a:hover{
-opacity:1;
-color:#00d4ff;
-}
-
-.side-menu input{
-width:100%;
-padding:8px;
-margin:10px 0;
-border:none;
-border-radius:8px;
-background:#1c2230;
-color:white;
-}
+.side-menu.active{left:0;}
 
 .overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.6);
 backdrop-filter:blur(5px);
-opacity:0;
-pointer-events:none;
-transition:0.3s;
-z-index:1500;
+opacity:0;pointer-events:none;transition:0.3s;z-index:1500;
+}
+.overlay.active{opacity:1;pointer-events:auto;}
+
+.menu-link{display:block;margin:15px 0;cursor:pointer;color:white;opacity:0.8;}
+.menu-link:hover{opacity:1;color:#00d4ff;}
+
+.tab{display:none;}
+.tab.active{display:block;}
+
+input{
+width:100%;padding:10px;margin:15px 0;
+background:#1c2230;border:none;border-radius:10px;color:white;
 }
 
-.overlay.active{
-opacity:1;
-pointer-events:auto;
+.filter-btn{
+display:inline-block;padding:6px 12px;
+margin:5px;border-radius:20px;
+background:#1c2230;cursor:pointer;font-size:13px;
+}
+.filter-btn:hover{background:#7b5cff;}
+
+.command-card{
+background:#111827;
+padding:15px;border-radius:10px;margin:10px 0;
+}
+
+/* Scroll Up Button */
+#scrollTop{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#7b5cff;
+width:45px;height:45px;
+border-radius:12px;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;display:none;
+box-shadow:0 0 20px rgba(123,92,255,0.6);
+}
+#scrollTop:hover{transform:scale(1.1);}
+
+/* Small name above about */
+.small-name{
+font-size:12px;
+opacity:0.7;
+margin-bottom:5px;
 }
 </style>
 </head>
 <body>
 
-<!-- Overlay -->
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<!-- Side Menu -->
 <div class="side-menu" id="sideMenu">
+
+<div class="menu-link" onclick="openTab('bot')">NEVA BOT</div>
+<div class="menu-link" onclick="openTab('privacy')">Gizlilik Politikası</div>
+<div class="menu-link" onclick="openTab('license')">Lisans</div>
+<div class="menu-link" onclick="openTab('commands')">Komut Arama</div>
+<div class="menu-link">Sunucuna Ekle (Yakında...)</div>
+<div class="menu-link">Destek Sunucusu (Yakında...)</div>
+
+<hr style="margin:20px 0;opacity:0.2;">
+
+<div id="bot" class="tab">
 <h2>NEVA BOT</h2>
+<p>Yakında detaylı bilgiler burada olacak.</p>
+</div>
 
-<a href="#">Gizlilik Politikası</a>
-<a href="#">Komutlar</a>
-<a href="#">Lisans</a>
-<a href="#">Sunucuna Ekle</a>
-<a href="#">Destek Sunucusu</a>
+<div id="privacy" class="tab">
+<h2>Gizlilik Politikası</h2>
+<p>Bu proje kullanıcı verisi saklamaz.</p>
+</div>
 
-<hr style="margin:15px 0;opacity:0.2;">
+<div id="license" class="tab">
+<h2>Lisanslar</h2>
+<p><b>Neva Code Lisans</b> - Tüm hakları saklıdır.</p>
+<p><b>Neva Bot Lisans</b> - Ticari kullanım yasaktır.</p>
+</div>
 
-<h3>Komut Filtreleme</h3>
+<div id="commands" class="tab">
+<h2>Komut Arama</h2>
+
 <input type="text" id="searchInput" placeholder="Komut Ara...">
 
-<div id="commandList">
-<p>/ban</p>
-<p>/kick</p>
-<p>/meme</p>
-<p>/ping</p>
-<p>/serverinfo</p>
+<div>
+<span class="filter-btn">Tümü</span>
+<span class="filter-btn">Eğlence</span>
+<span class="filter-btn">Sunucu</span>
+<span class="filter-btn">Moderasyon</span>
+<span class="filter-btn">Bot</span>
+</div>
+
+<div class="command-card">
+<b>+ban</b>
+<p>Kullanıcıyı sunucudan yasaklar.</p>
+</div>
+
+<div class="command-card">
+<b>+meme</b>
+<p>Rastgele meme gönderir.</p>
+</div>
+
 </div>
 
 </div>
@@ -239,61 +177,26 @@ pointer-events:auto;
 
 <section id="home">
 <h1 class="rgb-title">NEVA STUDIO | CODE COMMUNITY</h1>
-<p>Her hafta premium çekilişler, aktif sohbet ortamı ve süper altyapılarla
-geliştiriciler için modern bir topluluk.</p>
-<button class="btn">Sunucuya Katıl</button>
-</section>
-
-<section id="features">
-<h2>🚀 Code Sunucusu Özellikleri</h2>
-
-<div class="card">
-<p>✔ Her hafta Premium çekiliş</p>
-<p>✔ Aktif ve kaliteli sohbet ortamı</p>
-<p>✔ Süper Discord altyapıları</p>
-<p>✔ Yardımlaşma ve destek kanalları</p>
-<p>✔ Özel rol sistemleri</p>
-</div>
+<p>Her hafta premium çekilişler ve aktif topluluk.</p>
 </section>
 
 <section id="about">
+<div class="small-name">Swqze Derba</div>
 <h2>👑 BENİM HAKKIMDA</h2>
-<h3 style="margin-top:10px;">SWQZE DERBA</h3>
-
-<div class="card">
-
-<p>DJ's Bilgisi</p>
-<div class="bar"><div class="fill" style="width:10%;">10%</div></div>
-
-<p>BDFD</p>
-<div class="bar"><div class="fill" style="width:80%;">80%</div></div>
-
-<p>JavaScript</p>
-<div class="bar"><div class="fill" style="width:30%;">30%</div></div>
-
-<p>HTML</p>
-<div class="bar"><div class="fill" style="width:40%;">40%</div></div>
-
-<p>CSS</p>
-<div class="bar"><div class="fill" style="width:35%;">35%</div></div>
-
-<p>Node.js</p>
-<div class="bar"><div class="fill" style="width:25%;">25%</div></div>
-
-</div>
 </section>
 
 <footer>
-© 2026 NEVA Studio - All Rights Reserved.  
-This project is licensed under NEVA Creative License.
+© 2026 NEVA Studio - All Rights Reserved.
 </footer>
 
-<script>
-const logo = document.querySelector(".logo");
-const menu = document.getElementById("sideMenu");
-const overlay = document.getElementById("overlay");
+<div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-logo.addEventListener("click", ()=>{
+<script>
+const logo=document.querySelector(".logo");
+const menu=document.getElementById("sideMenu");
+const overlay=document.getElementById("overlay");
+
+logo.addEventListener("click",()=>{
 menu.classList.add("active");
 overlay.classList.add("active");
 });
@@ -303,12 +206,15 @@ menu.classList.remove("active");
 overlay.classList.remove("active");
 }
 
-document.getElementById("searchInput").addEventListener("keyup", function(){
-let filter = this.value.toLowerCase();
-let items = document.querySelectorAll("#commandList p");
-items.forEach(item=>{
-item.style.display = item.textContent.toLowerCase().includes(filter) ? "block" : "none";
-});
+function openTab(id){
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+closeMenu();
+}
+
+window.addEventListener("scroll",()=>{
+document.getElementById("scrollTop").style.display=
+window.scrollY>300?"flex":"none";
 });
 </script>
 
