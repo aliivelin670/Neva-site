@@ -8,31 +8,35 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0b0f17;color:white;scroll-behavior:smooth;}
+body{background:#0b0f17;color:white;scroll-behavior:smooth;overflow-x:hidden;}
 
+/* NAV */
 nav{
 display:flex;justify-content:space-between;align-items:center;
-padding:15px 30px;background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);position:fixed;width:100%;z-index:1000;
+padding:15px 30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+position:fixed;width:100%;z-index:1000;
 }
 
 .logo{
-width:40px;height:40px;border-radius:50%;
+width:42px;height:42px;border-radius:50%;
 display:flex;align-items:center;justify-content:center;
 font-weight:900;font-size:20px;
 background:linear-gradient(45deg,#7b5cff,#00d4ff);
 cursor:pointer;
+transition:0.3s;
 }
+.logo:hover{transform:scale(1.1);}
 
 nav ul{display:flex;gap:20px;list-style:none;}
 nav ul li a{color:white;text-decoration:none;opacity:0.8;}
-nav ul li a:hover{color:#7b5cff;}
+nav ul li a:hover{color:#7b5cff;opacity:1;}
 
-section{padding:110px 20px;text-align:center;display:none;}
-section.active{display:block;}
+section{padding:120px 20px;text-align:center;}
 
 .rgb-title{
-font-size:36px;font-weight:900;
+font-size:38px;font-weight:900;
 background:linear-gradient(90deg,#ff00cc,#3333ff,#00ffcc,#ff00cc);
 background-size:300%;
 -webkit-background-clip:text;color:transparent;
@@ -40,40 +44,70 @@ animation:rgbMove 6s linear infinite;
 }
 @keyframes rgbMove{0%{background-position:0%}100%{background-position:300%}}
 
-.card{background:rgba(255,255,255,0.05);padding:25px;border-radius:15px;margin:20px auto;max-width:600px;}
+.card{
+background:rgba(255,255,255,0.05);
+padding:25px;border-radius:15px;
+margin:20px auto;max-width:600px;
+backdrop-filter:blur(10px);
+}
 
-footer{padding:30px;text-align:center;opacity:0.6;font-size:14px;border-top:1px solid rgba(255,255,255,0.1);}
+.bar{background:#1c2230;border-radius:20px;margin:10px 0;overflow:hidden;}
+.fill{
+height:20px;
+background:linear-gradient(45deg,#7b5cff,#00d4ff);
+text-align:right;padding-right:10px;font-size:12px;
+}
 
 /* MENU */
 .side-menu{
-position:fixed;top:0;left:-100%;
-width:50%;height:100%;
-background:rgba(15,15,20,0.97);
-backdrop-filter:blur(15px);
-padding:30px;transition:0.4s;z-index:2000;
+position:fixed;top:0;left:-400px;
+width:380px;height:100%;
+background:rgba(15,15,20,0.95);
+backdrop-filter:blur(18px);
+padding:30px;
+transition:0.4s ease;
+z-index:2000;
+box-shadow:5px 0 40px rgba(0,0,0,0.6);
 }
 .side-menu.active{left:0;}
 
 .overlay{
 position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-opacity:0;pointer-events:none;transition:0.3s;z-index:1500;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(6px);
+opacity:0;pointer-events:none;
+transition:0.3s;z-index:1500;
 }
 .overlay.active{opacity:1;pointer-events:auto;}
 
-.menu-link{display:block;margin:15px 0;cursor:pointer;}
-.menu-link:hover{color:#00d4ff;}
-
-#scrollTop{
-position:fixed;bottom:25px;right:25px;
-background:#7b5cff;width:45px;height:45px;
-border-radius:12px;display:flex;
-align-items:center;justify-content:center;
-cursor:pointer;display:none;
+.menu-link{
+display:block;margin:18px 0;
+cursor:pointer;font-size:16px;
+opacity:0.8;transition:0.3s;
 }
+.menu-link:hover{opacity:1;color:#00d4ff;padding-left:5px;}
 
 .small-name{font-size:13px;opacity:0.7;}
 .big-about{font-size:26px;font-weight:700;margin-top:5px;}
+
+/* Scroll Top */
+#scrollTop{
+position:fixed;bottom:30px;right:30px;
+background:#7b5cff;
+width:48px;height:48px;
+border-radius:14px;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;display:none;
+box-shadow:0 0 20px rgba(123,92,255,0.6);
+transition:0.3s;
+}
+#scrollTop:hover{transform:scale(1.1);}
+
+footer{
+padding:30px;text-align:center;
+opacity:0.6;font-size:14px;
+border-top:1px solid rgba(255,255,255,0.1);
+}
 </style>
 </head>
 <body>
@@ -81,10 +115,10 @@ cursor:pointer;display:none;
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="side-menu" id="sideMenu">
-<div class="menu-link" onclick="showSection('home')">Ana Sayfa</div>
-<div class="menu-link" onclick="showSection('commands')">Komutlar</div>
-<div class="menu-link" onclick="showSection('privacy')">Gizlilik Politikası</div>
-<div class="menu-link" onclick="showSection('license')">Lisanslar</div>
+<div class="menu-link" onclick="scrollToSection('home')">Ana Sayfa</div>
+<div class="menu-link" onclick="scrollToSection('commands')">Komutlar</div>
+<div class="menu-link" onclick="scrollToSection('privacy')">Gizlilik Politikası</div>
+<div class="menu-link" onclick="scrollToSection('license')">Lisanslar</div>
 <div class="menu-link">Sunucuna Ekle (Yakında...)</div>
 <div class="menu-link">Destek Sunucusu (Yakında...)</div>
 </div>
@@ -92,14 +126,25 @@ cursor:pointer;display:none;
 <nav>
 <div class="logo">N</div>
 <ul>
-<li><a href="#" onclick="showSection('home')">Başlangıç</a></li>
-<li><a href="#" onclick="showSection('about')">Hakkımda</a></li>
+<li><a href="#home">Başlangıç</a></li>
+<li><a href="#about">Hakkımda</a></li>
+<li><a href="#features">Sunucu</a></li>
 </ul>
 </nav>
 
-<section id="home" class="active">
-<h1 class="rgb-title">NEVA STUDIO</h1>
+<section id="home">
+<h1 class="rgb-title">NEVA STUDIO | CODE COMMUNITY</h1>
 <p>Her hafta premium çekilişler ve aktif topluluk.</p>
+</section>
+
+<section id="features">
+<h2>🚀 Sunucu Özellikleri</h2>
+<div class="card">
+<p>✔ Premium çekilişler</p>
+<p>✔ Aktif sohbet</p>
+<p>✔ Süper altyapılar</p>
+<p>✔ Yardımlaşma kanalları</p>
+</div>
 </section>
 
 <section id="commands">
@@ -113,7 +158,7 @@ cursor:pointer;display:none;
 <section id="privacy">
 <h2>Gizlilik Politikası</h2>
 <div class="card">
-<p>Bu proje kullanıcı verisi saklamaz.</p>
+<p>Kullanıcı verisi saklanmaz.</p>
 </div>
 </section>
 
@@ -128,8 +173,25 @@ cursor:pointer;display:none;
 <section id="about">
 <div class="small-name">Swqze Derba</div>
 <div class="big-about">HAKKIMDA</div>
+
 <div class="card">
-<p>Topluluk yöneticisi ve geliştirici.</p>
+<p>DJ's Bilgisi</p>
+<div class="bar"><div class="fill" style="width:10%">10%</div></div>
+
+<p>BDFD</p>
+<div class="bar"><div class="fill" style="width:80%">80%</div></div>
+
+<p>JavaScript</p>
+<div class="bar"><div class="fill" style="width:30%">30%</div></div>
+
+<p>HTML</p>
+<div class="bar"><div class="fill" style="width:40%">40%</div></div>
+
+<p>CSS</p>
+<div class="bar"><div class="fill" style="width:35%">35%</div></div>
+
+<p>Node.js</p>
+<div class="bar"><div class="fill" style="width:25%">25%</div></div>
 </div>
 </section>
 
@@ -154,16 +216,14 @@ menu.classList.remove("active");
 overlay.classList.remove("active");
 }
 
-function showSection(id){
-document.querySelectorAll("section").forEach(sec=>sec.classList.remove("active"));
-document.getElementById(id).classList.add("active");
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 closeMenu();
-window.scrollTo({top:0});
 }
 
 window.addEventListener("scroll",()=>{
 document.getElementById("scrollTop").style.display=
-window.scrollY>300?"flex":"none";
+window.scrollY>400?"flex":"none";
 });
 </script>
 
