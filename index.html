@@ -5,166 +5,211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMORIA</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        font-family: 'Montserrat', sans-serif;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
 
-    /* Arka plan canvas */
-    #bgCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background: url('https://cdn.discordapp.com/attachments/1469746440103268406/1473006317835780352/IMG_4567.png?ex=6994a389&is=69935209&hm=88d2488ce76df84fb64d309bb4d88c7206564d9270af7ef06c4e7d517c90e355') center/cover no-repeat;
-    }
+body{
+background:#05060a;
+color:white;
+min-height:100vh;
+position:relative;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+}
 
-    /* Hafif karartma katmanı (daha premium görünüm) */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(4px);
-        background: rgba(255,255,255,0.15);
-        z-index: -1;
-    }
+/* MAVİ GLOW */
 
-    /* Ortadaki yazılar */
-    .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: black;
-    }
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:#0066ff;
+filter:blur(200px);
+opacity:0.25;
+top:-150px;
+right:-150px;
+}
 
-    .centered h1 {
-        font-size: 8rem; /* Daha büyük */
-        font-weight: 900;
-        margin: 0;
-        letter-spacing: 8px;
-    }
+/* NAVBAR */
 
-    .centered h2 {
-        font-size: 4.5rem;
-        font-weight: 700;
-        margin-top: 10px;
-        letter-spacing: 6px;
-    }
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
 
-    .bottom {
-        position: absolute;
-        bottom: 180px;
-        width: 100%;
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 700;
-        color: black;
-        letter-spacing: 4px;
-    }
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:20px;
+font-weight:900;
+}
 
-    @media (max-width: 768px) {
-        .centered h1 {
-            font-size: 4.5rem;
-        }
-        .centered h2 {
-            font-size: 2.5rem;
-        }
-        .bottom {
-            font-size: 2rem;
-            bottom: 120px;
-        }
-    }
+/* </> KUTU */
+
+.icon-box{
+background:rgba(255,255,255,0.08);
+padding:6px 12px;
+border-radius:10px;
+}
+
+.icon-box span{
+color:red;
+font-weight:900;
+}
+
+/* YAZI RENK */
+
+.logo .numoria{
+color:white;
+}
+
+.logo .website{
+color:#4f46e5;
+}
+
+.menu{
+font-size:26px;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+/* BAŞLIK */
+
+.hero h1{
+font-size:60px;
+font-weight:900;
+line-height:1.1;
+letter-spacing:3px;
+}
+
+.hero .numoria{
+color:white;
+}
+
+.hero .website{
+color:#4f46e5;
+}
+
+/* AÇIKLAMA */
+
+.desc{
+margin-top:25px;
+max-width:650px;
+font-size:18px;
+font-weight:700;
+line-height:1.6;
+}
+
+/* BUTONLAR */
+
+.buttons{
+margin-top:35px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:12px 30px;
+border-radius:40px;
+font-weight:700;
+text-decoration:none;
+font-size:15px;
+transition:0.3s;
+}
+
+.discord{
+background:#5865F2;
+color:white;
+}
+
+.youtube{
+background:#ff0000;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.btn svg{
+width:18px;
+height:18px;
+fill:white;
+}
+
+/* MOBİL UYUMLU */
+
+@media(max-width:600px){
+.hero h1{
+font-size:42px;
+}
+.desc{
+font-size:16px;
+}
+}
 </style>
 </head>
+
 <body>
 
-<canvas id="bgCanvas"></canvas>
-<div class="overlay"></div>
+<nav>
+<div class="logo">
+<div class="icon-box">
+<span>&lt;/&gt;</span>
+</div>
+<span class="numoria">NUMORIA</span>
+<span class="website">WEBSITE</span>
+</div>
+<div class="menu">☰</div>
+</nav>
 
-<div class="centered">
-    <h1>NUMORIA</h1>
-    <h2>WEBSITE</h2>
+<div class="hero">
+
+<h1>
+<span class="numoria">NUMORIA</span><br>
+<span class="website">WEBSITE</span>
+</h1>
+
+<div class="desc">
+Modern, güçlü ve sade tasarlanmış profesyonel website altyapısı.
 </div>
 
-<div class="bottom">
-    YAKINDA…
+<div class="buttons">
+
+<a href="#" class="btn discord">Discord</a>
+<a href="#" class="btn youtube">YouTube</a>
+
 </div>
 
-<script>
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    const particleCount = 150; // Daha fazla nokta
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.5 + 0.2;
-        }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
-                this.reset();
-            }
-
-            this.opacity -= 0.0003;
-            if (this.opacity <= 0) {
-                this.reset();
-            }
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0,0,0,${this.opacity})`;
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-</script>
+</div>
 
 </body>
 </html>
