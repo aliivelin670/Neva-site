@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMORIA</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="stylesheet">
 
 <style>
 *{
@@ -21,14 +21,20 @@ overflow-x:hidden;
 position:relative;
 }
 
-/* NAVBAR */
+/* NAVBAR - Düzeltildi: Sabitlendi ve arka plan eklendi */
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
-position:relative;
-z-index:5000;
+padding:15px 40px;
+position:fixed; /* Sayfa üzerinde sabit kalır */
+top:0;
+left:0;
+width:100%;
+z-index:6000; /* Her şeyin en üstünde */
+background:rgba(7, 9, 15, 0.7); /* Hafif şeffaf arka plan */
+backdrop-filter:blur(10px); /* Arkadaki yazıyı bulanıklaştırır, menüyü öne çıkarır */
+border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
@@ -49,7 +55,7 @@ border-radius:10px;
 color:red;
 }
 
-/* MENU BUTTON (X’e dokunmadım) */
+/* MENU BUTTON */
 .menu-btn{
 width:48px;
 height:48px;
@@ -58,7 +64,7 @@ justify-content:center;
 align-items:center;
 cursor:pointer;
 position:relative;
-z-index:5001;
+z-index:6001;
 transition:0.3s;
 }
 
@@ -79,41 +85,31 @@ background:red;
 border-radius:50%;
 }
 
-.menu-btn.active .line:nth-child(1){
-transform:rotate(45deg);
-}
+.menu-btn.active .line:nth-child(1){ transform:rotate(45deg); }
+.menu-btn.active .line:nth-child(2){ opacity:0; }
+.menu-btn.active .line:nth-child(3){ transform:rotate(-45deg); }
 
-.menu-btn.active .line:nth-child(2){
-opacity:0;
-}
-
-.menu-btn.active .line:nth-child(3){
-transform:rotate(-45deg);
-}
-
-/* HERO */
+/* HERO - Düzeltildi: Nav sabit olduğu için üstten boşluk verildi */
 .hero{
 text-align:center;
-padding:160px 20px 120px;
+padding:160px 20px 100px; 
 position:relative;
-z-index: 1;
+z-index:10; /* Nav'dan daha düşük olmalı */
 }
 
 .hero h1{
-font-size:55px;
+font-size:clamp(40px, 8vw, 70px); /* Mobilde küçülür, masaüstünde büyür */
 font-weight:900;
+line-height: 1.1;
 }
 
-/* PREMIUM MOR WEBSITE */
 .website{
 color:#8b5cf6;
 text-shadow:
 0 0 6px rgba(139,92,246,0.8),
-0 0 12px rgba(139,92,246,0.6),
-0 0 20px rgba(139,92,246,0.4);
+0 0 12px rgba(139,92,246,0.6);
 }
 
-/* RECORD BADGE */
 .badge-top{
 display:inline-flex;
 align-items:center;
@@ -122,7 +118,7 @@ background:rgba(255,255,255,0.06);
 padding:8px 18px;
 border-radius:30px;
 font-weight:700;
-margin-bottom:35px; /* yaklaşık 2cm boşluk */
+margin-bottom:25px;
 }
 
 .dot{
@@ -141,23 +137,21 @@ box-shadow:0 0 10px red;
 }
 
 .subtext{
-margin-top:25px;
-max-width:750px;
-margin-left:auto;
-margin-right:auto;
+margin: 25px auto;
+max-width:700px;
 font-weight:600;
 color:#b0b3c1;
 font-size:18px;
-text-align:center;
+line-height: 1.6;
 }
 
 /* BUTTONS */
 .buttons{
 margin-top:40px;
 display:flex;
-flex-direction:column;
-align-items:center;
+justify-content:center;
 gap:20px;
+flex-wrap: wrap;
 }
 
 .btn{
@@ -172,19 +166,10 @@ font-size:16px;
 transition:0.3s;
 }
 
-.discord{
-background:#5865F2;
-color:white;
-}
+.discord{ background:#5865F2; color:white; }
+.youtube{ background:#ff0000; color:white; }
 
-.youtube{
-background:#ff0000;
-color:white;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
+.btn:hover{ transform:translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
 /* OVERLAY */
 .overlay{
@@ -194,11 +179,11 @@ left:0;
 width:100%;
 height:100%;
 backdrop-filter:blur(8px);
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.6);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
-z-index:3500;
+z-index:4000;
 }
 
 .overlay.active{
@@ -214,12 +199,13 @@ right:-350px;
 height:100%;
 width:320px;
 background:#0e111a;
-transition:0.4s ease;
-padding:40px 30px;
+transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);
+padding:100px 30px 40px; /* Üstten boşluk verildi (nav butonu için) */
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-z-index:4000;
+z-index:5500;
+border-left: 1px solid rgba(255,255,255,0.05);
 }
 
 .sidebar.active{
@@ -227,27 +213,13 @@ right:0;
 }
 
 @media(max-width:768px){
-.sidebar{ width:70%; }
+.sidebar{ width:80%; }
+nav{ padding:15px 20px; }
 }
 
-@media(min-width:1024px){
-.sidebar{ width:340px; }
-}
-
-.version{
-font-weight:700;
-font-size:14px;
-}
-
-.menu-title{
-margin-top:10px;
-font-weight:800;
-}
-
-.product{
-font-size:13px;
-color:#aaa;
-}
+.version{ font-weight:700; font-size:14px; opacity: 0.5; }
+.menu-title{ margin-top:10px; font-weight:800; font-size: 24px; }
+.product{ font-size:13px; color:#aaa; line-height: 1.5; }
 </style>
 </head>
 
@@ -267,7 +239,6 @@ color:#aaa;
 </nav>
 
 <div class="hero">
-
 <div class="badge-top">
   <div class="dot"></div>
   TR'nin En İyisi
@@ -281,22 +252,22 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 </div>
 
 <div class="buttons">
-<a href="#" class="btn discord">Discord</a>
-<a href="#" class="btn youtube">YouTube</a>
+<a href="#" class="btn discord">Discord Sunucusu</a>
+<a href="#" class="btn youtube">YouTube Kanalı</a>
 </div>
-
 </div>
 
 <div class="overlay" id="overlay"></div>
 
 <div class="sidebar" id="sidebar">
 <div>
-<div class="version">v1.0.0</div>
-<div class="menu-title">NUMORIA <span class="website">WEBSITE</span></div>
+<div class="version">Sürüm v1.0.0</div>
+<div class="menu-title">NUMORIA <span class="website">MENÜ</span></div>
+<p style="margin-top:20px; color:#888;">Buraya menü linklerinizi ekleyebilirsiniz.</p>
 </div>
 
 <div class="product">
-Product By.<br>NUMORIA
+Tasarım ve Kodlama<br><strong>NUMORIA © 2024</strong>
 </div>
 </div>
 
@@ -305,19 +276,14 @@ const menuBtn=document.getElementById("menuBtn");
 const sidebar=document.getElementById("sidebar");
 const overlay=document.getElementById("overlay");
 
-function closeMenu(){
-menuBtn.classList.remove("active");
-sidebar.classList.remove("active");
-overlay.classList.remove("active");
-}
-
-menuBtn.addEventListener("click",()=>{
+function toggleMenu(){
 menuBtn.classList.toggle("active");
 sidebar.classList.toggle("active");
 overlay.classList.toggle("active");
-});
+}
 
-overlay.addEventListener("click",closeMenu);
+menuBtn.addEventListener("click", toggleMenu);
+overlay.addEventListener("click", toggleMenu);
 </script>
 
 </body>
