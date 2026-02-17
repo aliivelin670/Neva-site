@@ -22,14 +22,30 @@ position:relative;
 }
 
 /* NAVBAR */
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-position:relative;
-z-index:5000;
+/* NAVBAR DÜZENLEMESİ */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    
+    /* BURADAN AŞAĞISI EKLENECEK/GÜNCELLENECEK */
+    position: fixed; /* Mobilde yazının üstüne binmesini engeller, yukarı sabitler */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Arkadaki tüm yazılardan daha önde olması için en yüksek değer */
+    background: rgba(7, 9, 15, 0.9); /* Android'de arkadaki yazının okunmasını engeller */
+    backdrop-filter: blur(10px); /* Arkayı hafif bulanık yapar */
 }
+
+/* HERO KISMINA BOŞLUK */
+.hero {
+    padding-top: 150px; /* Menü yukarıya sabitlendiği için başlığın menünün altında kalmasını önler */
+    position: relative;
+    z-index: 1; /* Yazının menüden daha düşük seviyede olması sağlanır */
+}
+
 
 .logo{
 display:flex;
