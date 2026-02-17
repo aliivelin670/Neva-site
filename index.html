@@ -172,12 +172,6 @@ font-size:16px;
 transition:0.3s;
 }
 
-/* LOGO CSS EKLEMESİ */
-.btn img {
-    width: 24px;
-    height: auto;
-}
-
 .discord{
 background:#5865F2;
 color:white;
@@ -254,20 +248,6 @@ font-weight:800;
 font-size:13px;
 color:#aaa;
 }
-
-/* FOOTER EKLEMESİ */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    font-size: 12px;
-    color: #666;
-    background: rgba(7, 9, 15, 0.9);
-    z-index: 5000;
-}
 </style>
 </head>
 
@@ -302,20 +282,16 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 
 <div class="buttons">
     <a href="https://discord.gg" class="btn discord">
-        <img src="https://cdn.prod.website-files.com" alt="Discord">
+        <img src="https://cdn.prod.website-files.com" width="20" alt="Discord">
         Discord
     </a>
     <a href="https://youtube.com" class="btn youtube">
-        <img src="https://upload.wikimedia.org" alt="YouTube">
+        <img src="https://upload.wikimedia.org" width="20" alt="YouTube">
         YouTube
     </a>
 </div>
 
 </div>
-
-<footer>
-    <p>© 2024 NUMORIA. Tüm Hakları Saklıdır.</p>
-</footer>
 
 <div class="overlay" id="overlay"></div>
 
@@ -349,6 +325,7 @@ overlay.classList.toggle("active");
 
 overlay.addEventListener("click",closeMenu);
 </script>
+
 
 </body>
 </html>
