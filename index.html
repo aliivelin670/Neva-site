@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMORIA</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -21,7 +20,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* GLOW */
+/* Glow */
 body::before{
 content:"";
 position:absolute;
@@ -42,7 +41,7 @@ justify-content:space-between;
 align-items:center;
 padding:20px 40px;
 position:relative;
-z-index:1001;
+z-index:2000;
 }
 
 .logo{
@@ -63,36 +62,39 @@ border-radius:10px;
 color:red;
 }
 
+/* MENU BUTTON */
 .menu-btn{
-width:45px;
-height:45px;
+width:48px;
+height:48px;
 display:flex;
 justify-content:center;
 align-items:center;
 cursor:pointer;
 position:relative;
 transition:0.3s;
+z-index:2001;
 }
 
 .hamburger span{
 display:block;
-width:22px;
-height:2px;
+width:24px;
+height:3px;
 background:white;
-margin:5px 0;
+margin:4px 0;
 transition:0.4s;
+border-radius:2px;
 }
 
-/* ACTIVE BUTTON (KIRMIZI YUVARLAK) */
-
+/* ACTIVE STATE */
 .menu-btn.active{
 background:red;
 border-radius:50%;
 }
 
-.menu-btn.active span{
-background:white;
+.menu-btn.active .hamburger span{
 position:absolute;
+width:22px;
+height:3.5px;
 }
 
 .menu-btn.active span:nth-child(1){
@@ -111,6 +113,8 @@ transform:rotate(-45deg);
 .hero{
 text-align:center;
 padding:100px 20px;
+position:relative;
+z-index:1;
 }
 
 .hero h1{
@@ -118,22 +122,59 @@ font-size:55px;
 font-weight:900;
 }
 
-.website{
-color:#4f46e5;
-}
-
 .subtext{
-margin-top:20px;
-max-width:700px;
+margin-top:25px;
+max-width:750px;
 margin-left:auto;
 margin-right:auto;
 font-weight:600;
 color:#b0b3c1;
 font-size:18px;
+text-align:center;
 }
 
-/* SIDEMENU */
+/* BUTTONS */
+.buttons{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
 
+.btn{
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px 40px;
+border-radius:40px;
+font-weight:700;
+text-decoration:none;
+font-size:16px;
+transition:0.3s;
+}
+
+.discord{
+background:#5865F2;
+color:white;
+}
+
+.youtube{
+background:#ff0000;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.btn svg{
+width:20px;
+height:20px;
+fill:white;
+}
+
+/* OVERLAY */
 .overlay{
 position:fixed;
 top:0;
@@ -145,7 +186,7 @@ background:rgba(0,0,0,0.4);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
-z-index:999;
+z-index:1500;
 }
 
 .overlay.active{
@@ -153,6 +194,7 @@ opacity:1;
 visibility:visible;
 }
 
+/* SIDEBAR */
 .sidebar{
 position:fixed;
 top:0;
@@ -165,23 +207,23 @@ padding:40px 30px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-z-index:1000;
+z-index:1800;
 }
 
 .sidebar.active{
 right:0;
 }
 
-/* PC'de 8-9cm gibi */
+@media(max-width:768px){
+.sidebar{
+width:70%;
+}
+}
+
 @media(min-width:1024px){
 .sidebar{
 width:340px;
 }
-}
-
-/* MENU CONTENT */
-
-.menu-top{
 }
 
 .version{
@@ -194,20 +236,9 @@ margin-top:10px;
 font-weight:800;
 }
 
-.menu-title .website{
-color:#4f46e5;
-}
-
 .product{
 font-size:13px;
 color:#aaa;
-}
-
-/* Responsive Mobil */
-@media(max-width:768px){
-.sidebar{
-width:70%;
-}
 }
 </style>
 </head>
@@ -218,7 +249,6 @@ width:70%;
 <div class="logo">
 <div class="icon-box"><span>&lt;/&gt;</span></div>
 <span>NUMORIA</span>
-<span class="website">WEBSITE</span>
 </div>
 
 <div class="menu-btn" id="menuBtn">
@@ -231,30 +261,45 @@ width:70%;
 </nav>
 
 <div class="hero">
-<h1>NUMORIA <span class="website">WEBSITE</span></h1>
+<h1>NUMORIA WEBSITE</h1>
 
 <div class="subtext">
 Discordun En iyi Ve En Güvenli Botu Hızlı Ve Düzenli Yapısı İle 
 Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
+</div>
+
+<div class="buttons">
+
+<a href="#" class="btn discord">
+<!-- Discord SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3c-.161.286-.35.67-.479.969a18.27 18.27 0 0 0-8.812 0c-.13-.299-.318-.683-.48-.969a19.736 19.736 0 0 0-3.433 1.369C1.533 9.045.89 13.58 1.204 18.057a19.9 19.9 0 0 0 5.993 3.037c.483-.662.913-1.363 1.285-2.104a12.936 12.936 0 0 1-2.03-.97c.171-.124.339-.253.5-.388 3.924 1.842 8.18 1.842 12.057 0 .163.135.33.264.5.388a12.935 12.935 0 0 1-2.03.97c.372.741.802 1.442 1.285 2.104a19.89 19.89 0 0 0 5.993-3.037c.364-5.177-.61-9.669-2.441-13.688z"/>
+</svg>
+Discord
+</a>
+
+<a href="#" class="btn youtube">
+<!-- YouTube SVG -->
+<svg viewBox="0 0 24 24">
+<path d="M23.498 6.186a2.997 2.997 0 0 0-2.11-2.12C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.566a2.997 2.997 0 0 0-2.11 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.997 2.997 0 0 0 2.11 2.12C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.566a2.997 2.997 0 0 0 2.11-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+</svg>
+YouTube
+</a>
+
 </div>
 </div>
 
 <div class="overlay" id="overlay"></div>
 
 <div class="sidebar" id="sidebar">
-
-<div class="menu-top">
+<div>
 <div class="version">v1.0.0</div>
-<div class="menu-title">
-NUMORIA <span class="website">WEBSITE</span>
-</div>
+<div class="menu-title">NUMORIA WEBSITE</div>
 </div>
 
 <div class="product">
-Product By.<br>
-NUMORIA
+Product By.<br>NUMORIA
 </div>
-
 </div>
 
 <script>
@@ -262,17 +307,19 @@ const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 
+function closeMenu(){
+menuBtn.classList.remove("active");
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+}
+
 menuBtn.addEventListener("click",()=>{
 menuBtn.classList.toggle("active");
 sidebar.classList.toggle("active");
 overlay.classList.toggle("active");
 });
 
-overlay.addEventListener("click",()=>{
-menuBtn.classList.remove("active");
-sidebar.classList.remove("active");
-overlay.classList.remove("active");
-});
+overlay.addEventListener("click",closeMenu);
 </script>
 
 </body>
