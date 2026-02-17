@@ -21,44 +21,53 @@ overflow-x:hidden;
 position:relative;
 }
 
-/* NAVBAR - Düzeltildi: Sabitlendi ve arka plan eklendi */
+/* NAVBAR */
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 40px;
-position:fixed; /* Sayfa üzerinde sabit kalır */
+padding:20px 50px; /* Padding artırıldı */
+position:fixed;
 top:0;
 left:0;
 width:100%;
-z-index:6000; /* Her şeyin en üstünde */
-background:rgba(7, 9, 15, 0.7); /* Hafif şeffaf arka plan */
-backdrop-filter:blur(10px); /* Arkadaki yazıyı bulanıklaştırır, menüyü öne çıkarır */
+z-index:6000;
+background:rgba(7, 9, 15, 0.85);
+backdrop-filter:blur(15px);
 border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
+gap:15px;
 font-weight:900;
-font-size:20px;
+font-size:28px; /* Navigasyondaki logo büyütüldü */
+letter-spacing: 1px;
 }
 
 .icon-box{
-background:rgba(255,255,255,0.08);
-padding:6px 12px;
-border-radius:10px;
+background:rgba(255,255,255,0.1);
+width: 45px;  /* Kare kutu yapıldı */
+height: 45px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius:12px;
 }
 
 .icon-box span{
 color:red;
+font-size: 20px;
+font-weight: 900;
+display: block;
+line-height: 0; /* Kaymayı önlemek için */
 }
 
 /* MENU BUTTON */
 .menu-btn{
-width:48px;
-height:48px;
+width:55px;
+height:55px;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -70,15 +79,15 @@ transition:0.3s;
 
 .menu-btn .line{
 position:absolute;
-width:24px;
+width:28px;
 height:3px;
 background:white;
 transition:0.4s;
 border-radius:2px;
 }
 
-.menu-btn .line:nth-child(1){ transform:translateY(-8px); }
-.menu-btn .line:nth-child(3){ transform:translateY(8px); }
+.menu-btn .line:nth-child(1){ transform:translateY(-10px); }
+.menu-btn .line:nth-child(3){ transform:translateY(10px); }
 
 .menu-btn.active{
 background:red;
@@ -89,45 +98,57 @@ border-radius:50%;
 .menu-btn.active .line:nth-child(2){ opacity:0; }
 .menu-btn.active .line:nth-child(3){ transform:rotate(-45deg); }
 
-/* HERO - Düzeltildi: Nav sabit olduğu için üstten boşluk verildi */
+/* HERO SECTION */
 .hero{
 text-align:center;
-padding:160px 20px 100px; 
+padding:200px 20px 120px; 
 position:relative;
-z-index:10; /* Nav'dan daha düşük olmalı */
+z-index:10;
 }
 
 .hero h1{
-font-size:clamp(40px, 8vw, 70px); /* Mobilde küçülür, masaüstünde büyür */
+font-size: 85px; /* Ana başlık devasa yapıldı */
 font-weight:900;
-line-height: 1.1;
+line-height: 1;
+letter-spacing: -2px;
+text-transform: uppercase;
 }
 
+@media(max-width: 768px) {
+    .hero h1 { font-size: 45px; }
+    .logo { font-size: 22px; }
+    nav { padding: 15px 25px; }
+}
+
+/* PREMIUM MOR WEBSITE YAZISI */
 .website{
+display: block; /* Alt satıra alarak vurguyu artırır */
+font-size: 95px; /* Website kelimesi daha da büyük */
 color:#8b5cf6;
 text-shadow:
-0 0 6px rgba(139,92,246,0.8),
-0 0 12px rgba(139,92,246,0.6);
+0 0 15px rgba(139,92,246,0.8),
+0 0 30px rgba(139,92,246,0.4);
 }
 
 .badge-top{
 display:inline-flex;
 align-items:center;
 gap:10px;
-background:rgba(255,255,255,0.06);
-padding:8px 18px;
+background:rgba(255,255,255,0.08);
+padding:10px 22px;
 border-radius:30px;
 font-weight:700;
-margin-bottom:25px;
+margin-bottom:30px;
+border: 1px solid rgba(255,255,255,0.1);
 }
 
 .dot{
-width:10px;
-height:10px;
+width:12px;
+height:12px;
 background:red;
 border-radius:50%;
 animation:blink 1s infinite;
-box-shadow:0 0 10px red;
+box-shadow:0 0 15px red;
 }
 
 @keyframes blink{
@@ -137,20 +158,20 @@ box-shadow:0 0 10px red;
 }
 
 .subtext{
-margin: 25px auto;
-max-width:700px;
+margin: 35px auto;
+max-width:800px;
 font-weight:600;
 color:#b0b3c1;
-font-size:18px;
+font-size:20px;
 line-height: 1.6;
 }
 
 /* BUTTONS */
 .buttons{
-margin-top:40px;
+margin-top:50px;
 display:flex;
 justify-content:center;
-gap:20px;
+gap:25px;
 flex-wrap: wrap;
 }
 
@@ -158,18 +179,18 @@ flex-wrap: wrap;
 display:flex;
 align-items:center;
 gap:12px;
-padding:14px 40px;
-border-radius:40px;
-font-weight:700;
+padding:18px 50px;
+border-radius:50px;
+font-weight:800;
 text-decoration:none;
-font-size:16px;
-transition:0.3s;
+font-size:18px;
+transition:0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.discord{ background:#5865F2; color:white; }
-.youtube{ background:#ff0000; color:white; }
+.discord{ background:#5865F2; color:white; box-shadow: 0 10px 30px rgba(88,101,242,0.3); }
+.youtube{ background:#ff0000; color:white; box-shadow: 0 10px 30px rgba(255,0,0,0.3); }
 
-.btn:hover{ transform:translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+.btn:hover{ transform:translateY(-8px); filter: brightness(1.2); }
 
 /* OVERLAY */
 .overlay{
@@ -178,8 +199,8 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-backdrop-filter:blur(8px);
-background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.7);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
@@ -195,12 +216,12 @@ visibility:visible;
 .sidebar{
 position:fixed;
 top:0;
-right:-350px;
+right:-400px;
 height:100%;
-width:320px;
+width:350px;
 background:#0e111a;
-transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);
-padding:100px 30px 40px; /* Üstten boşluk verildi (nav butonu için) */
+transition:0.5s cubic-bezier(0.4, 0, 0.2, 1);
+padding:120px 40px 40px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
@@ -212,14 +233,9 @@ border-left: 1px solid rgba(255,255,255,0.05);
 right:0;
 }
 
-@media(max-width:768px){
-.sidebar{ width:80%; }
-nav{ padding:15px 20px; }
-}
-
-.version{ font-weight:700; font-size:14px; opacity: 0.5; }
-.menu-title{ margin-top:10px; font-weight:800; font-size: 24px; }
-.product{ font-size:13px; color:#aaa; line-height: 1.5; }
+.version{ font-weight:700; font-size:14px; color: #5865F2; }
+.menu-title{ margin-top:10px; font-weight:900; font-size: 32px; }
+.product{ font-size:14px; color:#666; letter-spacing: 1px; }
 </style>
 </head>
 
@@ -241,19 +257,19 @@ nav{ padding:15px 20px; }
 <div class="hero">
 <div class="badge-top">
   <div class="dot"></div>
-  TR'nin En İyisi
+  TR'NİN EN İYİSİ
 </div>
 
 <h1>NUMORIA <span class="website">WEBSITE</span></h1>
 
 <div class="subtext">
-Discordun En iyi Ve En Güvenli Botu Hızlı Ve Düzenli Yapısı İle 
-Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
+Discord'un en iyi ve en güvenli botu! Hızlı ve düzenli yapısı ile 
+gelişmiş bir bot arıyorsan doğru yerdesin.
 </div>
 
 <div class="buttons">
-<a href="#" class="btn discord">Discord Sunucusu</a>
-<a href="#" class="btn youtube">YouTube Kanalı</a>
+<a href="#" class="btn discord">Discord'a Katıl</a>
+<a href="#" class="btn youtube">YouTube'da İzle</a>
 </div>
 </div>
 
@@ -261,13 +277,18 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 
 <div class="sidebar" id="sidebar">
 <div>
-<div class="version">Sürüm v1.0.0</div>
-<div class="menu-title">NUMORIA <span class="website">MENÜ</span></div>
-<p style="margin-top:20px; color:#888;">Buraya menü linklerinizi ekleyebilirsiniz.</p>
+<div class="version">VERSION 1.0.0</div>
+<div class="menu-title">NUMORIA <span style="color:#8b5cf6;">MENÜ</span></div>
+<div style="margin-top:40px; display:flex; flex-direction:column; gap:20px;">
+    <a href="#" style="color:white; text-decoration:none; font-size:20px; font-weight:700;">Anasayfa</a>
+    <a href="#" style="color:white; text-decoration:none; font-size:20px; font-weight:700;">Komutlar</a>
+    <a href="#" style="color:white; text-decoration:none; font-size:20px; font-weight:700;">Hakkımızda</a>
+    <a href="#" style="color:white; text-decoration:none; font-size:20px; font-weight:700;">Destek</a>
+</div>
 </div>
 
 <div class="product">
-Tasarım ve Kodlama<br><strong>NUMORIA © 2024</strong>
+DESIGNED BY <br><strong style="color:white;">NUMORIA TEAM</strong>
 </div>
 </div>
 
