@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMORIA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -18,15 +18,10 @@ font-family:'Montserrat',sans-serif;
 body{
 background:#07090f;
 color:white;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-position:relative;
+overflow-x:hidden;
 }
 
-/* MAVİ GLOW */
-
+/* GLOW */
 body::before{
 content:"";
 position:absolute;
@@ -37,146 +32,181 @@ filter:blur(220px);
 opacity:0.25;
 top:-200px;
 right:-200px;
+z-index:-1;
 }
 
 /* NAVBAR */
-
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 40px;
+position:relative;
+z-index:1001;
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 font-weight:900;
 font-size:20px;
 }
 
 .icon-box{
-background:rgba(255,255,255,0.07);
-padding:6px 14px;
-border-radius:12px;
+background:rgba(255,255,255,0.08);
+padding:6px 12px;
+border-radius:10px;
 }
 
 .icon-box span{
 color:red;
-font-weight:900;
 }
 
-.menu{
-font-size:26px;
-color:white;
-}
-
-/* HERO */
-
-.hero{
-flex:1;
+.menu-btn{
+width:45px;
+height:45px;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
-}
-
-.hero h1{
-font-size:58px;
-font-weight:900;
-letter-spacing:2px;
-}
-
-.hero .numoria{
-color:white;
-}
-
-.hero .website{
-color:#4f46e5;
-}
-
-/* RECORD BADGE */
-
-.badge{
-margin-top:20px;
-display:flex;
-align-items:center;
-gap:10px;
-background:rgba(255,255,255,0.05);
-padding:8px 18px;
-border-radius:30px;
-font-weight:700;
-}
-
-/* YANIP SÖNEN NOKTA */
-
-.dot{
-width:10px;
-height:10px;
-background:red;
-border-radius:50%;
-animation:blink 1s infinite;
-box-shadow:0 0 10px red;
-}
-
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0.3;}
-100%{opacity:1;}
-}
-
-/* BUTONLAR */
-
-.buttons{
-margin-top:40px;
-display:flex;
-flex-direction:column;
-gap:20px;
-}
-
-.btn{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-padding:14px 35px;
-border-radius:40px;
-font-weight:700;
-text-decoration:none;
-font-size:16px;
+cursor:pointer;
+position:relative;
 transition:0.3s;
 }
 
-.discord{
-background:#5865F2;
-color:white;
+.hamburger span{
+display:block;
+width:22px;
+height:2px;
+background:white;
+margin:5px 0;
+transition:0.4s;
 }
 
-.youtube{
-background:#ff0000;
-color:white;
+/* ACTIVE BUTTON (KIRMIZI YUVARLAK) */
+
+.menu-btn.active{
+background:red;
+border-radius:50%;
 }
 
-.btn:hover{
-transform:scale(1.07);
+.menu-btn.active span{
+background:white;
+position:absolute;
 }
 
-/* SVG LOGO BOYUT */
-
-.btn svg{
-width:20px;
-height:20px;
-fill:white;
+.menu-btn.active span:nth-child(1){
+transform:rotate(45deg);
 }
 
-/* MOBİL */
+.menu-btn.active span:nth-child(2){
+opacity:0;
+}
 
-@media(max-width:600px){
+.menu-btn.active span:nth-child(3){
+transform:rotate(-45deg);
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:100px 20px;
+}
+
 .hero h1{
-font-size:40px;
+font-size:55px;
+font-weight:900;
+}
+
+.website{
+color:#4f46e5;
+}
+
+.subtext{
+margin-top:20px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+font-weight:600;
+color:#b0b3c1;
+font-size:18px;
+}
+
+/* SIDEMENU */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+backdrop-filter:blur(8px);
+background:rgba(0,0,0,0.4);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+z-index:999;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+right:-350px;
+height:100%;
+width:320px;
+background:#0e111a;
+transition:0.4s ease;
+padding:40px 30px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+z-index:1000;
+}
+
+.sidebar.active{
+right:0;
+}
+
+/* PC'de 8-9cm gibi */
+@media(min-width:1024px){
+.sidebar{
+width:340px;
+}
+}
+
+/* MENU CONTENT */
+
+.menu-top{
+}
+
+.version{
+font-weight:700;
+font-size:14px;
+}
+
+.menu-title{
+margin-top:10px;
+font-weight:800;
+}
+
+.menu-title .website{
+color:#4f46e5;
+}
+
+.product{
+font-size:13px;
+color:#aaa;
+}
+
+/* Responsive Mobil */
+@media(max-width:768px){
+.sidebar{
+width:70%;
 }
 }
 </style>
@@ -186,48 +216,64 @@ font-size:40px;
 
 <nav>
 <div class="logo">
-<div class="icon-box">
-<span>&lt;/&gt;</span>
-</div>
+<div class="icon-box"><span>&lt;/&gt;</span></div>
 <span>NUMORIA</span>
+<span class="website">WEBSITE</span>
 </div>
-<div class="menu">☰</div>
+
+<div class="menu-btn" id="menuBtn">
+<div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
 </nav>
 
 <div class="hero">
+<h1>NUMORIA <span class="website">WEBSITE</span></h1>
 
-<div class="badge">
-<div class="dot"></div>
-TR'nin En İyisi
+<div class="subtext">
+Discordun En iyi Ve En Güvenli Botu Hızlı Ve Düzenli Yapısı İle 
+Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
+</div>
 </div>
 
+<div class="overlay" id="overlay"></div>
 
-<h1>
-<span class="numoria">NUMORIA</span><br>
-<span class="website">WEBSITE</span>
-</h1>
+<div class="sidebar" id="sidebar">
 
-<div class="buttons">
+<div class="menu-top">
+<div class="version">v1.0.0</div>
+<div class="menu-title">
+NUMORIA <span class="website">WEBSITE</span>
+</div>
+</div>
 
-<a href="#" class="btn discord">
-<!-- Discord Logo -->
-<svg viewBox="0 0 24 24">
-<path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3c-.161.286-.35.67-.479.969a18.27 18.27 0 0 0-8.812 0c-.13-.299-.318-.683-.48-.969a19.736 19.736 0 0 0-3.433 1.369C1.533 9.045.89 13.58 1.204 18.057a19.9 19.9 0 0 0 5.993 3.037c.483-.662.913-1.363 1.285-2.104a12.936 12.936 0 0 1-2.03-.97c.171-.124.339-.253.5-.388 3.924 1.842 8.18 1.842 12.057 0 .163.135.33.264.5.388a12.935 12.935 0 0 1-2.03.97c.372.741.802 1.442 1.285 2.104a19.89 19.89 0 0 0 5.993-3.037c.364-5.177-.61-9.669-2.441-13.688z"/>
-</svg>
-Discord
-</a>
-
-<a href="#" class="btn youtube">
-<!-- YouTube Logo -->
-<svg viewBox="0 0 24 24">
-<path d="M23.498 6.186a2.997 2.997 0 0 0-2.11-2.12C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.566a2.997 2.997 0 0 0-2.11 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.997 2.997 0 0 0 2.11 2.12C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.566a2.997 2.997 0 0 0 2.11-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/>
-</svg>
-YouTube
-</a>
-
+<div class="product">
+Product By.<br>
+NUMORIA
 </div>
 
 </div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+menuBtn.addEventListener("click",()=>{
+menuBtn.classList.toggle("active");
+sidebar.classList.toggle("active");
+overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click",()=>{
+menuBtn.classList.remove("active");
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+});
+</script>
 
 </body>
 </html>
