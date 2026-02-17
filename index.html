@@ -18,17 +18,20 @@ body{
 background:#07090f;
 color:white;
 overflow-x:hidden;
-position:relative;
 }
 
-/* NAVBAR */
+/* NAVBAR FIXED YAPILDI */
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 40px;
-position:relative;
-z-index:5000;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#07090f;
+z-index:9999;
 }
 
 .logo{
@@ -49,7 +52,7 @@ border-radius:10px;
 color:red;
 }
 
-/* MENU BUTTON (X’e dokunmadım) */
+/* MENU BUTTON */
 .menu-btn{
 width:48px;
 height:48px;
@@ -58,7 +61,7 @@ justify-content:center;
 align-items:center;
 cursor:pointer;
 position:relative;
-z-index:5001;
+z-index:10000;
 transition:0.3s;
 }
 
@@ -91,12 +94,12 @@ opacity:0;
 transform:rotate(-45deg);
 }
 
-/* HERO */
+/* HERO NAVBAR ALTINA İTİLDİ */
 .hero{
 text-align:center;
-padding:120px 20px;
+padding:140px 20px 120px;
 position:relative;
-z-index:100;
+z-index:1;
 }
 
 .hero h1{
@@ -104,10 +107,9 @@ font-size:55px;
 font-weight:900;
 }
 
-/* PREMIUM MOR WEBSITE */
+/* WEBSITE MOR */
 .website{
 color:#8b5cf6;
-text-shadow: none;
 }
 
 /* RECORD BADGE */
@@ -119,7 +121,7 @@ background:rgba(255,255,255,0.06);
 padding:8px 18px;
 border-radius:30px;
 font-weight:700;
-margin-bottom:35px; /* yaklaşık 2cm boşluk */
+margin-bottom:35px;
 }
 
 .dot{
@@ -195,7 +197,7 @@ background:rgba(0,0,0,0.4);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
-z-index:2000;
+z-index:8000;
 }
 
 .overlay.active{
@@ -216,7 +218,7 @@ padding:40px 30px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-z-index:3000;
+z-index:9000;
 }
 
 .sidebar.active{
