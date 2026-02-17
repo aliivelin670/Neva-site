@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMORIA</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="stylesheet">
 
 <style>
 *{
@@ -172,6 +172,12 @@ font-size:16px;
 transition:0.3s;
 }
 
+/* LOGO CSS EKLEMESİ */
+.btn img {
+    width: 24px;
+    height: auto;
+}
+
 .discord{
 background:#5865F2;
 color:white;
@@ -248,6 +254,20 @@ font-weight:800;
 font-size:13px;
 color:#aaa;
 }
+
+/* FOOTER EKLEMESİ */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #666;
+    background: rgba(7, 9, 15, 0.9);
+    z-index: 5000;
+}
 </style>
 </head>
 
@@ -281,11 +301,21 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 </div>
 
 <div class="buttons">
-<a href="https://discord.gg/AdkqpvK3Xe" class="btn discord">Discord</a>
-<a href="https://youtube.com/@numoria0?si=mZ7jW9P0U5t3uyl3" class="btn youtube">YouTube</a>
+    <a href="https://discord.gg" class="btn discord">
+        <img src="https://cdn.prod.website-files.com" alt="Discord">
+        Discord
+    </a>
+    <a href="https://youtube.com" class="btn youtube">
+        <img src="https://upload.wikimedia.org" alt="YouTube">
+        YouTube
+    </a>
 </div>
 
 </div>
+
+<footer>
+    <p>© 2024 NUMORIA. Tüm Hakları Saklıdır.</p>
+</footer>
 
 <div class="overlay" id="overlay"></div>
 
@@ -319,7 +349,6 @@ overlay.classList.toggle("active");
 
 overlay.addEventListener("click",closeMenu);
 </script>
-
 
 </body>
 </html>
