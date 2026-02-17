@@ -18,6 +18,7 @@ body{
 background:#07090f;
 color:white;
 overflow-x:hidden;
+position:relative;
 }
 
 /* NAVBAR */
@@ -27,7 +28,7 @@ justify-content:space-between;
 align-items:center;
 padding:20px 40px;
 position:relative;
-z-index:3000;
+z-index:5000;
 }
 
 .logo{
@@ -48,7 +49,7 @@ border-radius:10px;
 color:red;
 }
 
-/* MENU BUTTON */
+/* MENU BUTTON (X’e dokunmadım) */
 .menu-btn{
 width:48px;
 height:48px;
@@ -57,7 +58,7 @@ justify-content:center;
 align-items:center;
 cursor:pointer;
 position:relative;
-z-index:3001;
+z-index:5001;
 transition:0.3s;
 }
 
@@ -71,10 +72,8 @@ border-radius:2px;
 }
 
 .menu-btn .line:nth-child(1){ transform:translateY(-8px); }
-.menu-btn .line:nth-child(2){ }
 .menu-btn .line:nth-child(3){ transform:translateY(8px); }
 
-/* ACTIVE STATE */
 .menu-btn.active{
 background:red;
 border-radius:50%;
@@ -96,11 +95,49 @@ transform:rotate(-45deg);
 .hero{
 text-align:center;
 padding:100px 20px;
+position:relative;
+z-index:100;
 }
 
 .hero h1{
 font-size:55px;
 font-weight:900;
+}
+
+/* PREMIUM MOR WEBSITE */
+.website{
+color:#8b5cf6;
+text-shadow:
+0 0 6px rgba(139,92,246,0.8),
+0 0 12px rgba(139,92,246,0.6),
+0 0 20px rgba(139,92,246,0.4);
+}
+
+/* RECORD BADGE */
+.badge{
+margin-top:25px;
+display:inline-flex;
+align-items:center;
+gap:10px;
+background:rgba(255,255,255,0.06);
+padding:8px 18px;
+border-radius:30px;
+font-weight:700;
+}
+
+.dot{
+width:10px;
+height:10px;
+background:red;
+border-radius:50%;
+animation:blink 1s infinite;
+box-shadow:0 0 10px red;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0.3;}
+100%{opacity:1;}
 }
 
 .subtext{
@@ -149,12 +186,6 @@ color:white;
 transform:scale(1.05);
 }
 
-.btn svg{
-width:20px;
-height:20px;
-fill:white;
-}
-
 /* OVERLAY */
 .overlay{
 position:fixed;
@@ -188,7 +219,7 @@ padding:40px 30px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-z-index:2500;
+z-index:3000;
 }
 
 .sidebar.active{
@@ -236,7 +267,12 @@ color:#aaa;
 </nav>
 
 <div class="hero">
-<h1>NUMORIA WEBSITE</h1>
+<h1>NUMORIA <span class="website">WEBSITE</span></h1>
+
+<div class="badge">
+<div class="dot"></div>
+TR'nin En İyisi
+</div>
 
 <div class="subtext">
 Discordun En iyi Ve En Güvenli Botu Hızlı Ve Düzenli Yapısı İle 
@@ -247,6 +283,7 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 <a href="#" class="btn discord">Discord</a>
 <a href="#" class="btn youtube">YouTube</a>
 </div>
+
 </div>
 
 <div class="overlay" id="overlay"></div>
@@ -254,8 +291,9 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 <div class="sidebar" id="sidebar">
 <div>
 <div class="version">v1.0.0</div>
-<div class="menu-title">NUMORIA WEBSITE</div>
+<div class="menu-title">NUMORIA <span class="website">WEBSITE</span></div>
 </div>
+
 <div class="product">
 Product By.<br>NUMORIA
 </div>
