@@ -22,30 +22,14 @@ position:relative;
 }
 
 /* NAVBAR */
-/* NAVBAR DÜZENLEMESİ */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    
-    /* BURADAN AŞAĞISI EKLENECEK/GÜNCELLENECEK */
-    position: fixed; /* Mobilde yazının üstüne binmesini engeller, yukarı sabitler */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999; /* Arkadaki tüm yazılardan daha önde olması için en yüksek değer */
-    background: rgba(7, 9, 15, 0.9); /* Android'de arkadaki yazının okunmasını engeller */
-    backdrop-filter: blur(10px); /* Arkayı hafif bulanık yapar */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+position:relative;
+z-index:5000;
 }
-
-/* HERO KISMINA BOŞLUK */
-.hero {
-    padding-top: 150px; /* Menü yukarıya sabitlendiği için başlığın menünün altında kalmasını önler */
-    position: relative;
-    z-index: 1; /* Yazının menüden daha düşük seviyede olması sağlanır */
-}
-
 
 .logo{
 display:flex;
@@ -110,7 +94,7 @@ transform:rotate(-45deg);
 /* HERO */
 .hero{
 text-align:center;
-padding:120px 20px;
+padding:100px 20px;
 position:relative;
 z-index:100;
 }
@@ -130,7 +114,8 @@ text-shadow:
 }
 
 /* RECORD BADGE */
-.badge-top{
+.badge{
+margin-top:25px;
 display:inline-flex;
 align-items:center;
 gap:10px;
@@ -138,7 +123,6 @@ background:rgba(255,255,255,0.06);
 padding:8px 18px;
 border-radius:30px;
 font-weight:700;
-margin-bottom:35px; /* yaklaşık 2cm boşluk */
 }
 
 .dot{
@@ -283,13 +267,12 @@ color:#aaa;
 </nav>
 
 <div class="hero">
-
-<div class="badge-top">
-  <div class="dot"></div>
-  TR'nin En İyisi
-</div>
-
 <h1>NUMORIA <span class="website">WEBSITE</span></h1>
+
+<div class="badge">
+<div class="dot"></div>
+TR'nin En İyisi
+</div>
 
 <div class="subtext">
 Discordun En iyi Ve En Güvenli Botu Hızlı Ve Düzenli Yapısı İle 
