@@ -20,20 +20,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* Glow */
-body::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:#0066ff;
-filter:blur(220px);
-opacity:0.25;
-top:-200px;
-right:-200px;
-z-index:-1;
-}
-
 /* NAVBAR */
 nav{
 display:flex;
@@ -41,7 +27,7 @@ justify-content:space-between;
 align-items:center;
 padding:20px 40px;
 position:relative;
-z-index:2000;
+z-index:3000;
 }
 
 .logo{
@@ -71,19 +57,22 @@ justify-content:center;
 align-items:center;
 cursor:pointer;
 position:relative;
+z-index:3001;
 transition:0.3s;
-z-index:2001;
 }
 
-.hamburger span{
-display:block;
+.menu-btn .line{
+position:absolute;
 width:24px;
 height:3px;
 background:white;
-margin:4px 0;
 transition:0.4s;
 border-radius:2px;
 }
+
+.menu-btn .line:nth-child(1){ transform:translateY(-8px); }
+.menu-btn .line:nth-child(2){ }
+.menu-btn .line:nth-child(3){ transform:translateY(8px); }
 
 /* ACTIVE STATE */
 .menu-btn.active{
@@ -91,21 +80,15 @@ background:red;
 border-radius:50%;
 }
 
-.menu-btn.active .hamburger span{
-position:absolute;
-width:22px;
-height:3.5px;
-}
-
-.menu-btn.active span:nth-child(1){
+.menu-btn.active .line:nth-child(1){
 transform:rotate(45deg);
 }
 
-.menu-btn.active span:nth-child(2){
+.menu-btn.active .line:nth-child(2){
 opacity:0;
 }
 
-.menu-btn.active span:nth-child(3){
+.menu-btn.active .line:nth-child(3){
 transform:rotate(-45deg);
 }
 
@@ -113,8 +96,6 @@ transform:rotate(-45deg);
 .hero{
 text-align:center;
 padding:100px 20px;
-position:relative;
-z-index:1;
 }
 
 .hero h1{
@@ -186,7 +167,7 @@ background:rgba(0,0,0,0.4);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
-z-index:1500;
+z-index:2000;
 }
 
 .overlay.active{
@@ -207,7 +188,7 @@ padding:40px 30px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-z-index:1800;
+z-index:2500;
 }
 
 .sidebar.active{
@@ -215,15 +196,11 @@ right:0;
 }
 
 @media(max-width:768px){
-.sidebar{
-width:70%;
-}
+.sidebar{ width:70%; }
 }
 
 @media(min-width:1024px){
-.sidebar{
-width:340px;
-}
+.sidebar{ width:340px; }
 }
 
 .version{
@@ -252,11 +229,9 @@ color:#aaa;
 </div>
 
 <div class="menu-btn" id="menuBtn">
-<div class="hamburger">
-<span></span>
-<span></span>
-<span></span>
-</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
 </div>
 </nav>
 
@@ -269,23 +244,8 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 </div>
 
 <div class="buttons">
-
-<a href="#" class="btn discord">
-<!-- Discord SVG -->
-<svg viewBox="0 0 24 24">
-<path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3c-.161.286-.35.67-.479.969a18.27 18.27 0 0 0-8.812 0c-.13-.299-.318-.683-.48-.969a19.736 19.736 0 0 0-3.433 1.369C1.533 9.045.89 13.58 1.204 18.057a19.9 19.9 0 0 0 5.993 3.037c.483-.662.913-1.363 1.285-2.104a12.936 12.936 0 0 1-2.03-.97c.171-.124.339-.253.5-.388 3.924 1.842 8.18 1.842 12.057 0 .163.135.33.264.5.388a12.935 12.935 0 0 1-2.03.97c.372.741.802 1.442 1.285 2.104a19.89 19.89 0 0 0 5.993-3.037c.364-5.177-.61-9.669-2.441-13.688z"/>
-</svg>
-Discord
-</a>
-
-<a href="#" class="btn youtube">
-<!-- YouTube SVG -->
-<svg viewBox="0 0 24 24">
-<path d="M23.498 6.186a2.997 2.997 0 0 0-2.11-2.12C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.388.566a2.997 2.997 0 0 0-2.11 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.997 2.997 0 0 0 2.11 2.12C4.495 20.5 12 20.5 12 20.5s7.505 0 9.388-.566a2.997 2.997 0 0 0 2.11-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-</svg>
-YouTube
-</a>
-
+<a href="#" class="btn discord">Discord</a>
+<a href="#" class="btn youtube">YouTube</a>
 </div>
 </div>
 
@@ -296,16 +256,15 @@ YouTube
 <div class="version">v1.0.0</div>
 <div class="menu-title">NUMORIA WEBSITE</div>
 </div>
-
 <div class="product">
 Product By.<br>NUMORIA
 </div>
 </div>
 
 <script>
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+const menuBtn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
 
 function closeMenu(){
 menuBtn.classList.remove("active");
