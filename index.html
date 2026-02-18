@@ -248,6 +248,58 @@ font-weight:800;
 font-size:13px;
 color:#aaa;
 }
+
+.menu-accordion{
+margin-top:40px;
+}
+
+.accordion-header{
+font-size:19px;
+font-weight:800;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:space-between;
+color:white;
+transition:0.3s ease;
+margin-top:30px;
+}
+
+.accordion-header:hover{
+color:#a855f7;
+}
+
+.arrow-icon{
+transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.arrow-icon.rotate{
+transform:rotate(180deg);
+}
+
+.accordion-content{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.4s ease, opacity 0.3s ease;
+opacity:0;
+margin-top:15px;
+}
+
+.accordion-content.active{
+max-height:300px;
+opacity:1;
+}
+
+.accordion-content ul{
+list-style:none;
+padding:0;
+display:flex;
+flex-direction:column;
+gap:12px;
+font-weight:700;
+color:#d1d5db;
+}
+
 </style>
 </head>
 
@@ -292,8 +344,33 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 
 <div class="sidebar" id="sidebar">
 <div>
+
 <div class="version">v1.0.0</div>
 <div class="menu-title">NUMORIA <span class="website">WEBSITE</span></div>
+
+<!-- ACCORDION BURAYA EKLENDİ -->
+<div class="menu-accordion">
+
+  <div class="accordion-header" id="accordionToggle">
+    <span>Neden NUMORIA?</span>
+
+    <svg class="arrow-icon" id="arrowIcon" width="18" height="18" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="accordion-content" id="accordionContent">
+    <ul>
+      <li>7/24 Aktif Sistem</li>
+      <li>Yüksek Performans</li>
+      <li>Güvenli Altyapı</li>
+      <li>Gelişmiş Komutlar</li>
+      <li>Her Hafta Güncelleme</li>
+    </ul>
+  </div>
+
+</div>
+
 </div>
 
 <div class="product">
@@ -316,6 +393,15 @@ menuBtn.addEventListener("click",()=>{
 menuBtn.classList.toggle("active");
 sidebar.classList.toggle("active");
 overlay.classList.toggle("active");
+});
+
+const toggle = document.getElementById("accordionToggle");
+const content = document.getElementById("accordionContent");
+const arrow = document.getElementById("arrowIcon");
+
+toggle.addEventListener("click", () => {
+  content.classList.toggle("active");
+  arrow.classList.toggle("rotate");
 });
 
 overlay.addEventListener("click",closeMenu);
