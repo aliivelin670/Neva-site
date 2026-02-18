@@ -374,6 +374,27 @@ Gelişmiş Bir Bot Arıyorsan Doğru Yerdesin.
 
 </div>
 
+<div class="menu-accordion">
+
+  <div class="accordion-header" id="aboutToggle">
+    <span>Biz Kimiz?</span>
+
+    <svg class="arrow-icon" id="aboutArrow" width="18" height="18" viewBox="0 0 24 24">
+      <path d="M6 9l6 6 6-6" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="accordion-content" id="aboutContent">
+    <ul>
+      <li>Yazılım ve bot geliştirme topluluğuyuz</li>
+      <li>Düzenli altyapı ve sistem paylaşımı yaparız</li>
+      <li>Geliştirilebilir açık kaynak projeler üretiriz</li>
+      <li>Topluluk odaklı büyürüz</li>
+    </ul>
+  </div>
+
+</div>
+
 <div class="product">
 Product By.<br>NUMORIA
 </div>
@@ -408,6 +429,14 @@ toggle.addEventListener("click", () => {
 overlay.addEventListener("click",closeMenu);
 </script>
 
+const aboutToggle = document.getElementById("aboutToggle");
+const aboutContent = document.getElementById("aboutContent");
+const aboutArrow = document.getElementById("aboutArrow");
+
+aboutToggle.addEventListener("click", () => {
+  aboutContent.classList.toggle("active");
+  aboutArrow.classList.toggle("rotate");
+});
 
 </body>
 </html>
